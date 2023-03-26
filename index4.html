@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+       
+        function swapCase(text) {
+            var newLetters = "";
+            for (var i = 0; i < text.length; i++) {
+                if (text[i] === text[i].toLowerCase()) {
+                    newLetters += text[i].toUpperCase();
+                } else {
+                    newLetters += text[i].toLowerCase();
+                }
+            }
+
+            return newLetters;
+        }
+        var text = prompt("enter the string")
+        var swappedText = swapCase(text);
+        function reverseString(str) {
+            let newString = "";
+            for (let i = str.length - 1; i >= 0; i--) {
+                newString += str[i];
+            }
+            return newString;
+        } const result = reverseString(swappedText);
+        console.log(result);
+
+    </script>
+
+</body>
+
+</html>

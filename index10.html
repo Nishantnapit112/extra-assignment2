@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  function largestwordcode(str){
+    const words=str.split(" ");
+    let laregestword=" ";
+    let largestcode=0;
+    for (let i = 0; i< words.length; i++) {
+      const word = words[i];
+      let code=0;
+      for (let j = 0; j < word.length; j++) {
+        code += word.charCodeAt(j);
+        
+      }
+      if(code>largestcode){
+        laregestword=word;
+        largestcode=code;
+      }
+       
+    }
+    return laregestword;
+
+  }
+  const str="the quick breown fox jumps over the lazy dogs";
+  const largest=largestwordcode(str);
+  console.log(largest);    
+  </script>
+</body>
+</html>

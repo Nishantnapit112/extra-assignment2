@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <table id="table"></table>
+    <button onclick="post()">post</button>
+    <button onclick="gets()">GET</button>
+</body>
+<script>
+    async function get(link) {
+        var data = await fetch(link)
+        var data = await data.text()
+        var output = JSON.parse(data)
+        console.log(output);
+        document.getElementById("table").innerHTML =
+            `<tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Status</td>
+            </tr>
+        `
+        output.forEach(element => {
+            console.log(element)
+
+            document.getElementById("table").innerHTML +=
+                `
+        <tr>
+            <td>${element.id}</td>
+            <td>${element.name}</td>
+            <td>${element.email}</td>
+            <td>${element.gender}</td>
+            <td>${element.status}</td>
+            </tr>
+        `
+        });
+    }
+
+
+    function post() {
+        var name = "jaynesh"
+        var gender = "male"
+        var status = "active"
+        var email = "jayneshmehta124@gmail.com"
+
+        var settings = {
+            "url": "https://gorest.co.in/public/v2/users/",
+            "method": "POST",
+            "timeout": 0,
+            "headers": {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": "Bearer 42dd7720a32cb5ecf520da01319fb6709db878f70bab809513bd787a9d2f8770"
+            },
+            "data": JSON.stringify({
+                "name": `${name}`,
+                "email": `${email}`,
+                "gender": "male",
+                "status": "active"
+            }),
+        };
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+
+        console.log("done")
+    }
+    function gets(){
+
+        get("https://gorest.co.in/public/v2/users");
+
+    }
+
+</script>
+
+</html
